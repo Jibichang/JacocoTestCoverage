@@ -2,4 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.data">
 
+    <application>
+        <activity
+            android:name=".MainDataActivity"
+            android:exported="false" />
+    </application>
+
 </manifest>
