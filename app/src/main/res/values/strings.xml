@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JaCoCOExample</string>
+    <string name="pref_main_name">com.example.jacocoexample.MAIN</string>
 </resources>
