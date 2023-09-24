@@ -86,13 +86,13 @@ def setupAndroidReporting() {
                 additionalSourceDirs.setFrom(files(coverageSourceDirs))
 
                 reports {
-                    csv.enabled false // change if needed
+                    csv.required.set(false) // change if needed
                     xml {
-                        enabled true
+                        required.set(true)
                         destination file("${buildDir}/coverage-report")
                     }
                     html {
-                        enabled true
+                        required.set(true)
                         destination file("${buildDir}/coverage-report")
                     }
                 }
