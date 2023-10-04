@@ -1,14 +1,19 @@
 package com.example.jacocoexample
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.example.jacocoexample.ui.main.MainFragment
-
+import com.example.jacocoexample.ui.main.OverlayDetectionLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mEditor: SharedPreferences.Editor
     private lateinit var newSharedPref: SharedPreferences
 
+    lateinit var result: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -28,22 +35,74 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
 
-//        with (sharedPref.edit()) {
-//            putInt("NUMBER", 1)
-//            putString("STRING", "my application")
-//            apply()
-//        }
+//        check()
 
-        val number = sharedPref.getInt("NUMBER", 0)
-        println("------------- sharedPref $number")
-
-
-        val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener {
-            movePref(applicationContext)
-            val number2 = newSharedPref.getInt("NUMBER", 0)
-            println("------------- newSharedPref $number2")
+        result = findViewById(R.id.textResult)
+        val overlayLayout: OverlayDetectionLayout = findViewById(R.id.overlayLayout)
+        overlayLayout.onOverlayDetected = {
+            result.text = "found overlay app!"
         }
+        overlayLayout.onNoOverlayDetected = {
+            result.text = "not found"
+        }
+
+        val button = findViewById<Button>(R.id.goSetting)
+        button.setOnClickListener {
+            val intent = Intent()
+            intent.action = android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+        }
+
+    }
+
+    private fun check() {
+        val buttonCheckTouch = findViewById<View>(android.R.id.content)
+        buttonCheckTouch.setOnTouchListener { _, event ->
+            checkFlagObscure(event)
+        }
+    }
+
+    private fun checkFlagObscure(event: MotionEvent) = event?.let {
+        val obscured = it.flags and
+                MotionEvent.FLAG_WINDOW_IS_OBSCURED == MotionEvent.FLAG_WINDOW_IS_OBSCURED
+        val partially = it.flags and
+                MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED == MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED
+        if (obscured || partially) {
+            result.text = " obscured $obscured \n partially $partially \n\n found overlay app!"
+            false
+        } else {
+            result.text = "not found"
+            true
+        }
+    } ?: true
+
+
+//    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+//        ev?.let {
+//            val obscured =
+//                it.flags and MotionEvent.FLAG_WINDOW_IS_OBSCURED == MotionEvent.FLAG_WINDOW_IS_OBSCURED
+//            val partially =
+//                it.flags and MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED == MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED
+//            if (obscured || partially) {
+//                println("------ obscured $obscured")
+//                println("------ partially $partially")
+//                result.text = " obscured $obscured \n partially $partially \n\n found overlay app!"
+//            } else {
+//                result.text = "not found"
+//            }
+//        }
+//        return super.dispatchTouchEvent(ev)
+//    }
+
+    private fun setOnClickTestPref() {
+//        val button = findViewById<Button>(R.id.button)
+//        button.setOnClickListener {
+//            movePref(applicationContext)
+//            val number2 = newSharedPref.getInt("NUMBER", 0)
+//            println("------------- newSharedPref $number2")
+//        }
     }
 
     private fun movePref(context: Context) {
