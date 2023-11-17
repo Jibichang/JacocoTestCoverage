@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -29,22 +30,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
-
-//        check()
-
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.container, MainFragment.newInstance())
+//                .commitNow()
+//        }
         result = findViewById(R.id.textResult)
-        val overlayLayout: OverlayDetectionLayout = findViewById(R.id.overlayLayout)
-        overlayLayout.onOverlayDetected = {
-            result.text = "found overlay app!"
-        }
-        overlayLayout.onNoOverlayDetected = {
-            result.text = "not found"
-        }
+        check()
+
+//        val overlayLayout: OverlayDetectionLayout = findViewById(R.id.overlayLayout)
+//        overlayLayout.onOverlayDetected = {
+//            result.text = "found overlay app!\n $it"
+//        }
+//        overlayLayout.onNoOverlayDetected = {
+//            result.text = "not found\n $it"
+//        }
 
         val button = findViewById<Button>(R.id.goSetting)
         button.setOnClickListener {
@@ -58,43 +58,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun check() {
-        val buttonCheckTouch = findViewById<View>(android.R.id.content)
+        val buttonCheckTouch = findViewById<Button>(R.id.buttonCheckTouch)
         buttonCheckTouch.setOnTouchListener { _, event ->
             checkFlagObscure(event)
         }
     }
 
-    private fun checkFlagObscure(event: MotionEvent) = event?.let {
-        val obscured = it.flags and
-                MotionEvent.FLAG_WINDOW_IS_OBSCURED == MotionEvent.FLAG_WINDOW_IS_OBSCURED
-        val partially = it.flags and
-                MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED == MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED
+    private fun checkFlagObscure(event: MotionEvent) = event.let {
+        val obscured = (it.flags and MotionEvent.FLAG_WINDOW_IS_OBSCURED) != 0
+        val partially = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            (it.flags and MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED) != 0
+        } else {
+            obscured
+        }
         if (obscured || partially) {
-            result.text = " obscured $obscured \n partially $partially \n\n found overlay app!"
+            result.text = "obscured $obscured \n partially $partially \n\n found overlay app!"
             false
         } else {
-            result.text = "not found"
+            result.text = "obscured $obscured \n partially $partially \n\nnot found "
             true
         }
-    } ?: true
-
-
-//    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-//        ev?.let {
-//            val obscured =
-//                it.flags and MotionEvent.FLAG_WINDOW_IS_OBSCURED == MotionEvent.FLAG_WINDOW_IS_OBSCURED
-//            val partially =
-//                it.flags and MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED == MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED
-//            if (obscured || partially) {
-//                println("------ obscured $obscured")
-//                println("------ partially $partially")
-//                result.text = " obscured $obscured \n partially $partially \n\n found overlay app!"
-//            } else {
-//                result.text = "not found"
-//            }
-//        }
-//        return super.dispatchTouchEvent(ev)
-//    }
+    }
 
     private fun setOnClickTestPref() {
 //        val button = findViewById<Button>(R.id.button)

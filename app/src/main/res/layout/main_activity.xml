@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.jacocoexample.ui.main.OverlayDetectionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/overlayLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:filterTouchesWhenObscured="true"
+    tools:context=".MainActivity">
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
 
-    <com.example.jacocoexample.ui.main.OverlayDetectionLayout
-        android:id="@+id/overlayLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/buttonCheckTouch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detectTouch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/buttonCheckTouch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="detectTouch"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/goSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Go to setting"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCheckTouch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/goSetting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Go to setting"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonCheckTouch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="not found"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCheckTouch"
+        app:layout_constraintStart_toStartOf="@+id/buttonCheckTouch"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCheckTouch" />
 
-        <TextView
-            android:id="@+id/textResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="not found"
-            app:layout_constraintEnd_toEndOf="@+id/buttonCheckTouch"
-            app:layout_constraintStart_toStartOf="@+id/buttonCheckTouch"
-            app:layout_constraintTop_toBottomOf="@+id/buttonCheckTouch" />
-    </com.example.jacocoexample.ui.main.OverlayDetectionLayout>
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
+</com.example.jacocoexample.ui.main.OverlayDetectionLayout>
 
-</FrameLayout>
+
+    <!--</FrameLayout>-->
