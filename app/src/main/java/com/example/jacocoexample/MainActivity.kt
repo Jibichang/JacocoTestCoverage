@@ -36,15 +36,15 @@ class MainActivity : AppCompatActivity() {
 //                .commitNow()
 //        }
         result = findViewById(R.id.textResult)
-        check()
+//        check()
 
-//        val overlayLayout: OverlayDetectionLayout = findViewById(R.id.overlayLayout)
-//        overlayLayout.onOverlayDetected = {
-//            result.text = "found overlay app!\n $it"
-//        }
-//        overlayLayout.onNoOverlayDetected = {
-//            result.text = "not found\n $it"
-//        }
+        val overlayLayout: OverlayDetectionLayout = findViewById(R.id.overlayLayout)
+        overlayLayout.onOverlayDetected = {
+            result.text = "found overlay app!\n $it"
+        }
+        overlayLayout.onNoOverlayDetected = {
+            result.text = "not found\n $it"
+        }
 
         val button = findViewById<Button>(R.id.goSetting)
         button.setOnClickListener {
