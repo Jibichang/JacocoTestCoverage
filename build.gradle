@@ -3,9 +3,9 @@ buildscript {
     ext.versions = [
             compileSdk      : 33,
             buildTools      : '30.0.3',
-            minSdk          : 23,
+            minSdk          : 21,
             targetSdk       : 33,
-            kotlin          : '1.7.10'
+            kotlin          : '1.9.0'
     ]
     repositories {
         google()
@@ -16,7 +16,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "org.jacoco:org.jacoco.core:0.8.8"
         classpath 'com.google.gms:google-services:4.3.5'
-
+        classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -25,6 +25,7 @@ buildscript {
 allprojects {
     apply plugin: 'jacoco'
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
     }

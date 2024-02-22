@@ -46,10 +46,11 @@ class OverlayDetectionLayout @JvmOverloads constructor(
 
         println("-----------badTouch = $badTouch")
         return if (badTouch) {
-            onOverlayDetected.invoke("partially = $partially \n obscured = $obscured")
+
+            onOverlayDetected.invoke("partially = $partially \n obscured = $obscured \n overlay = $overlay")
             false
         } else {
-            onNoOverlayDetected.invoke("is not Overlay, \nevent null? ${event == null}\n partially = $partially \n obscured = $obscured")
+            onNoOverlayDetected.invoke("is not Overlay, \nevent null? ${event == null}\n partially = $partially \n obscured = $obscured \n overlay = $overlay")
             super.onFilterTouchEventForSecurity(event)
         }
     }

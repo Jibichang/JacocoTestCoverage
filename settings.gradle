@@ -1,3 +1,11 @@
 rootProject.name = "JaCoCOExample"
 include ':app'
 include ':data'
+
+dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
