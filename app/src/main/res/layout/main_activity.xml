@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<com.example.jacocoexample.ui.main.OverlayDetectionLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:id="@+id/overlayLayout"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:filterTouchesWhenObscured="true"-->
-<!--    tools:context=".MainActivity">-->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.jacocoexample.ui.main.OverlayDetectionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/overlayLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:filterTouchesWhenObscured="true"
+    tools:context=".MainActivity">
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/overlayLayout"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
 
     <Button
         android:id="@+id/buttonOpenScan"
@@ -49,11 +49,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="not found"
+        android:lineSpacingExtra="6sp"
         app:layout_constraintEnd_toEndOf="@+id/buttonCheckTouch"
         app:layout_constraintStart_toStartOf="@+id/buttonCheckTouch"
         app:layout_constraintTop_toBottomOf="@+id/buttonCheckTouch" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
-<!--    </com.example.jacocoexample.ui.main.OverlayDetectionLayout>-->
+    </com.example.jacocoexample.ui.main.OverlayDetectionLayout>

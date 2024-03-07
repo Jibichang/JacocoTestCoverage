@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="black_snack">#CC000000</color>
+    <color name="trans">#80000000</color>
 </resources>

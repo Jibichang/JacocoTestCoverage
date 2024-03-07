@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">JaCoCOExample</string>
     <string name="pref_main_name">com.example.jacocoexample.MAIN</string>
+
+
+    <string name="scammer_detect_usb_detail" translatable="false">&lt;b>Oppo&lt;/b>&lt;br&gt;
+1. ไปที่เมนู ‘การตั้งค่า (Settings)’ ของอุปกรณ์ และเลือก ‘การตั้งค่าเพิ่มเติม (Additional Settings)’&lt;br&gt;
+2. เลือก ‘ตัวเลือกสำหรับนักพัฒนาแอป (Developer Options)’&lt;br&gt;
+3. ปิดการใช้งาน ‘การแก้ไขข้อบกพร่อง USB (USB Debugging)’ และเข้าใช้งานแอปฯ เป๋าตังใหม่อีกครั้ง&lt;br&gt;
+&lt;br&gt;
+&lt;b>Vivo&lt;/b>&lt;br&gt;
+1. ไปที่เมนู ‘การตั้งค่า (Settings)’ ของอุปกรณ์ และเลือก ‘ระบบ (System)’&lt;br&gt;
+2. เลือก ‘ตัวเลือกสำหรับนักพัฒนาแอป (Developer Options)’&lt;br&gt;
+3. ปิดการใช้งาน ‘การแก้ไขข้อบกพร่อง USB (USB Debugging)’ และเข้าใช้งานแอปฯ เป๋าตังใหม่อีกครั้ง</string>
+    <string name="scammer_detect_usb_detail_normal" translatable="false"><b>Oppo</b><br></br>
+1. ไปที่เมนู ‘การตั้งค่า (Settings)’ ของอุปกรณ์ และเลือก ‘การตั้งค่าเพิ่มเติม (Additional Settings)<br></br>
+2. เลือก ‘ตัวเลือกสำหรับนักพัฒนาแอป (Developer Options)’<br></br>
+3. ปิดการใช้งาน ‘การแก้ไขข้อบกพร่อง USB (USB Debugging)’ และเข้าใช้งานแอปฯ เป๋าตังใหม่อีกครั้ง<br></br>
+<br></br>
+<b>Vivo</b><br></br>
+1. ไปที่เมนู ‘การตั้งค่า (Settings)’ ของอุปกรณ์ และเลือก ‘ระบบ (System)’<br></br>
+2. เลือก ‘ตัวเลือกสำหรับนักพัฒนาแอป (Developer Options)’<br></br>
+3. ปิดการใช้งาน ‘การแก้ไขข้อบกพร่อง USB (USB Debugging)’ และเข้าใช้งานแอปฯ เป๋าตังใหม่อีกครั้ง</string>
 </resources>
